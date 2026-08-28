@@ -51,3 +51,19 @@ window.loadPortfolioData = async function () {
 };
 
 console.log("API Configuration loaded - using local backend");
+
+// Dynamic copyright year (sub-pages are injected into the DOM after navigation,
+// so we also watch for them being added and fill in the current year).
+(function () {
+  function setCopyrightYear() {
+    var y = new Date().getFullYear();
+    document.querySelectorAll(".rights.copy .copy-year").forEach(function (el) {
+      el.textContent = y;
+    });
+  }
+  new MutationObserver(setCopyrightYear).observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+  document.addEventListener("DOMContentLoaded", setCopyrightYear);
+})();
