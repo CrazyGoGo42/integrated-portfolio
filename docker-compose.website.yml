@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    image: portfolio_web:latest
+    container_name: portfolio_web
+    ports:
+      - "3004:80"
+    volumes:
+      - portfolio_uploads:/var/www/html/uploads
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  portfolio_uploads:

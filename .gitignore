@@ -1,0 +1,12 @@
+# Secrets / local env
+.env
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+
+# Backups created during setup
+*.bak
+
+# Dependencies / build artifacts
+node_modules/

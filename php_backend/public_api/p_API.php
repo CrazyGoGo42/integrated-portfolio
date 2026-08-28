@@ -1,0 +1,245 @@
+<?php
+header('Content-Type: application/json');
+
+// Portfolio API data - properly formatted
+$portfolioData = [
+    "1" => [
+        "id" => 1,
+        "category" => "Disegni",
+        "cover" => "minerva/thumb/img/ff321ccaf1aca5d26b5a6b8c72b125bf.jpg",
+        "bigCover" => "minerva/img/img/ff321ccaf1aca5d26b5a6b8c72b125bf.jpg",
+        "description" => "Eine Auswahl meiner digitalen und traditionellen Arbeiten!",
+        "friendlyURL" => "/disegni",
+        "galleries" => [
+            "1" => [
+                "gid" => 1,
+                "gname" => "Digitali",
+                "descr" => "Ich verbringe viel Zeit mit Photoshop und Procreate, um Charaktere oder Szenarien zu erstellen, die nur in meiner Vorstellung existieren. Und auch einige Porträts.",
+                "gcover" => "minerva/thumb/img/88898e99c894e8fceadc1046bd99b661.jpg",
+                "gcoverBig" => "minerva/img/img/88898e99c894e8fceadc1046bd99b661.jpg",
+                "images" => [
+                    ["id" => 6, "src" => "img/ed39b987f59dfc3ce2f5102a9be58bbf.jpg", "th" => "thumb/img/ed39b987f59dfc3ce2f5102a9be58bbf.jpg", "idgall" => 1, "ord" => 1, "gname" => "Digitali"],
+                    ["id" => 45, "src" => "img/52db6372cab17d0b4e20aec8424f7292.jpg", "th" => "thumb/img/52db6372cab17d0b4e20aec8424f7292.jpg", "idgall" => 1, "ord" => 2, "gname" => "Digitali"],
+                    ["id" => 9, "src" => "img/71ee16cc70da6b4259fa41e1d3913046.jpg", "th" => "thumb/img/71ee16cc70da6b4259fa41e1d3913046.jpg", "idgall" => 1, "ord" => 3, "gname" => "Digitali"],
+                    ["id" => 24, "src" => "img/708ead42b70dd6c184953c2b21f6b153.jpg", "th" => "thumb/img/708ead42b70dd6c184953c2b21f6b153.jpg", "idgall" => 1, "ord" => 4, "gname" => "Digitali"],
+                    ["id" => 21, "src" => "img/17c9b3d1f111b76712223f6299ee2763.jpg", "th" => "thumb/img/17c9b3d1f111b76712223f6299ee2763.jpg", "idgall" => 1, "ord" => 5, "gname" => "Digitali"],
+                    ["id" => 25, "src" => "img/465bc691e0fc4a69cb3cfae69ea8d982.jpg", "th" => "thumb/img/465bc691e0fc4a69cb3cfae69ea8d982.jpg", "idgall" => 1, "ord" => 6, "gname" => "Digitali"],
+                    ["id" => 16, "src" => "img/1913574d622de82cee30c09340b5d878.jpg", "th" => "thumb/img/1913574d622de82cee30c09340b5d878.jpg", "idgall" => 1, "ord" => 7, "gname" => "Digitali"],
+                    ["id" => 23, "src" => "img/b3265925d36c6ecd3fd6ec12dbbae5f0.jpg", "th" => "thumb/img/b3265925d36c6ecd3fd6ec12dbbae5f0.jpg", "idgall" => 1, "ord" => 8, "gname" => "Digitali"],
+                    ["id" => 22, "src" => "img/3f60e0bb8bff996713dde153e0009da5.jpg", "th" => "thumb/img/3f60e0bb8bff996713dde153e0009da5.jpg", "idgall" => 1, "ord" => 9, "gname" => "Digitali"],
+                    ["id" => 12, "src" => "img/c81cea862956ef94f5e1a863cfb61b9e.jpg", "th" => "thumb/img/c81cea862956ef94f5e1a863cfb61b9e.jpg", "idgall" => 1, "ord" => 10, "gname" => "Digitali"],
+                    ["id" => 20, "src" => "img/fa623171fc8e452b8afaa8965d655a2f.jpg", "th" => "thumb/img/fa623171fc8e452b8afaa8965d655a2f.jpg", "idgall" => 1, "ord" => 11, "gname" => "Digitali"],
+                    ["id" => 46, "src" => "img/4366beeaa66bbc7a0850d80ce5d83bab.JPG", "th" => "thumb/img/4366beeaa66bbc7a0850d80ce5d83bab.JPG", "idgall" => 1, "ord" => 12, "gname" => "Digitali"],
+                    ["id" => 19, "src" => "img/b822f6aa0a264ccf564e28dfe726c847.jpg", "th" => "thumb/img/b822f6aa0a264ccf564e28dfe726c847.jpg", "idgall" => 1, "ord" => 13, "gname" => "Digitali"],
+                    ["id" => 17, "src" => "img/b5fc6693b676998952d2aebcac446787.jpg", "th" => "thumb/img/b5fc6693b676998952d2aebcac446787.jpg", "idgall" => 1, "ord" => 14, "gname" => "Digitali"],
+                    ["id" => 10, "src" => "img/682b301054cd71e77a7aa8986c76efc1.jpg", "th" => "thumb/img/682b301054cd71e77a7aa8986c76efc1.jpg", "idgall" => 1, "ord" => 15, "gname" => "Digitali"],
+                    ["id" => 18, "src" => "img/8ffb3235ccce5bfaae62ae5847b26f02.jpg", "th" => "thumb/img/8ffb3235ccce5bfaae62ae5847b26f02.jpg", "idgall" => 1, "ord" => 16, "gname" => "Digitali"],
+                    ["id" => 15, "src" => "img/f8809d6d62a0edb027416836824ed9fa.jpg", "th" => "thumb/img/f8809d6d62a0edb027416836824ed9fa.jpg", "idgall" => 1, "ord" => 17, "gname" => "Digitali"],
+                    ["id" => 14, "src" => "img/b9654e68c0a515bc9388c9e118ef2a21.jpg", "th" => "thumb/img/b9654e68c0a515bc9388c9e118ef2a21.jpg", "idgall" => 1, "ord" => 18, "gname" => "Digitali"],
+                    ["id" => 13, "src" => "img/88898e99c894e8fceadc1046bd99b661.jpg", "th" => "thumb/img/88898e99c894e8fceadc1046bd99b661.jpg", "idgall" => 1, "ord" => 19, "gname" => "Digitali"],
+                    ["id" => 11, "src" => "img/11f325fcfe3e2f0aefa6817afb821321.jpg", "th" => "thumb/img/11f325fcfe3e2f0aefa6817afb821321.jpg", "idgall" => 1, "ord" => 20, "gname" => "Digitali"],
+                    ["id" => 4, "src" => "img/a3a06188de40c12cccd336d9aefde2fb.jpg", "th" => "thumb/img/a3a06188de40c12cccd336d9aefde2fb.jpg", "idgall" => 1, "ord" => 21, "gname" => "Digitali"],
+                    ["id" => 3, "src" => "img/ba9e0e917a01c0fd91ca5bf028296caa.jpg", "th" => "thumb/img/ba9e0e917a01c0fd91ca5bf028296caa.jpg", "idgall" => 1, "ord" => 22, "gname" => "Digitali"]
+                ]
+            ],
+            "2" => [
+                "gid" => 2,
+                "gname" => "Tradizionali",
+                "descr" => "Hier sehen Sie, was auf Papier entsteht!",
+                "gcover" => "minerva/thumb/img/f8b200d4afce2ac9bcb0a4358aa7c5cb.JPG",
+                "gcoverBig" => "minerva/img/img/f8b200d4afce2ac9bcb0a4358aa7c5cb.JPG",
+                "images" => [
+                    ["id" => 94, "src" => "img/612f329cbbee2b1ffeaf18fc71b83f1d.JPG", "th" => "thumb/img/612f329cbbee2b1ffeaf18fc71b83f1d.JPG", "idgall" => 2, "ord" => 1, "gname" => "Tradizionali"],
+                    ["id" => 93, "src" => "img/b91f11f2d2500681777a139f38e46aee.jpg", "th" => "thumb/img/b91f11f2d2500681777a139f38e46aee.jpg", "idgall" => 2, "ord" => 2, "gname" => "Tradizionali"],
+                    ["id" => 92, "src" => "img/8c955c5665481339da1636eb6294d76d.JPG", "th" => "thumb/img/8c955c5665481339da1636eb6294d76d.JPG", "idgall" => 2, "ord" => 3, "gname" => "Tradizionali"],
+                    ["id" => 91, "src" => "img/f8b200d4afce2ac9bcb0a4358aa7c5cb.JPG", "th" => "thumb/img/f8b200d4afce2ac9bcb0a4358aa7c5cb.JPG", "idgall" => 2, "ord" => 4, "gname" => "Tradizionali"]
+                ]
+            ]
+        ]
+    ],
+    "2" => [
+        "id" => 2,
+        "category" => "3d",
+        "cover" => "minerva/thumb/img/05f5bdc51f2f9f4d763056eb728af423.jpg",
+        "bigCover" => "minerva/img/img/05f5bdc51f2f9f4d763056eb728af423.jpg",
+        "description" => "Auch wenn es nicht meine Hauptbeschäftigung ist, möchte ich einen Raum für 3D-Modellierung schaffen.",
+        "friendlyURL" => "/3d",
+        "galleries" => [
+            "3" => [
+                "gid" => 3,
+                "gname" => "3d",
+                "descr" => "",
+                "gcover" => "minerva/thumb/img/05f5bdc51f2f9f4d763056eb728af423.jpg",
+                "gcoverBig" => "minerva/img/img/05f5bdc51f2f9f4d763056eb728af423.jpg",
+                "images" => [
+                    ["id" => 38, "src" => "img/05f5bdc51f2f9f4d763056eb728af423.jpg", "th" => "thumb/img/05f5bdc51f2f9f4d763056eb728af423.jpg", "idgall" => 3, "ord" => 1, "gname" => "3d"],
+                    ["id" => 95, "src" => "img/6f0ae937d08a565fc351e939be125e02.jpg", "th" => "thumb/img/6f0ae937d08a565fc351e939be125e02.jpg", "idgall" => 3, "ord" => 2, "gname" => "3d"],
+                    ["id" => 97, "src" => "img/fa42a73f730f0eec885b341a5542cda4.jpg", "th" => "thumb/img/fa42a73f730f0eec885b341a5542cda4.jpg", "idgall" => 3, "ord" => 3, "gname" => "3d"],
+                    ["id" => 96, "src" => "img/73597d21dbb176ae079f6f6b9d310d0b.jpg", "th" => "thumb/img/73597d21dbb176ae079f6f6b9d310d0b.jpg", "idgall" => 3, "ord" => 4, "gname" => "3d"]
+                ]
+            ]
+        ]
+    ],
+    "3" => [
+        "id" => 3,
+        "category" => "Fotografia",
+        "cover" => "minerva/thumb/img/4d3fe54affff5a281f0c87538051018f.jpg",
+        "bigCover" => "minerva/img/img/4d3fe54affff5a281f0c87538051018f.jpg",
+        "description" => "In diesem Raum wollte ich eine Auswahl von Fotografien zusammenstellen, die meinen vom Kino inspirierten Stil repräsentieren.",
+        "friendlyURL" => "/fotografia",
+        "galleries" => [
+            "4" => [
+                "gid" => 4,
+                "gname" => "Cinema",
+                "descr" => "Landschaften und Motive, die mit filmischem Schnitt und Postproduktion aufgenommen wurden.",
+                "gcover" => "minerva/thumb/img/36dbcbdd0572a3cbbac3023313f7cb30.jpg",
+                "gcoverBig" => "minerva/img/img/36dbcbdd0572a3cbbac3023313f7cb30.jpg",
+                "images" => [
+                    ["id" => 86, "src" => "img/177897de5144dd5128ca6abc4b15836b.jpg", "th" => "thumb/img/177897de5144dd5128ca6abc4b15836b.jpg", "idgall" => 4, "ord" => 1, "gname" => "Cinema"],
+                    ["id" => 83, "src" => "img/36dbcbdd0572a3cbbac3023313f7cb30.jpg", "th" => "thumb/img/36dbcbdd0572a3cbbac3023313f7cb30.jpg", "idgall" => 4, "ord" => 2, "gname" => "Cinema"],
+                    ["id" => 82, "src" => "img/88ef4164e942669807f63167046d0852.jpg", "th" => "thumb/img/88ef4164e942669807f63167046d0852.jpg", "idgall" => 4, "ord" => 3, "gname" => "Cinema"],
+                    ["id" => 81, "src" => "img/d20b151c122d807f98e12a18f5c2d027.jpg", "th" => "thumb/img/d20b151c122d807f98e12a18f5c2d027.jpg", "idgall" => 4, "ord" => 4, "gname" => "Cinema"],
+                    ["id" => 79, "src" => "img/4d3fe54affff5a281f0c87538051018f.jpg", "th" => "thumb/img/4d3fe54affff5a281f0c87538051018f.jpg", "idgall" => 4, "ord" => 5, "gname" => "Cinema"],
+                    ["id" => 78, "src" => "img/774679ebeb18d751a3e51b7bb6f9c0e5.jpg", "th" => "thumb/img/774679ebeb18d751a3e51b7bb6f9c0e5.jpg", "idgall" => 4, "ord" => 6, "gname" => "Cinema"],
+                    ["id" => 74, "src" => "img/5ad0bf532606c9fa3348408e6d2bb698.jpg", "th" => "thumb/img/5ad0bf532606c9fa3348408e6d2bb698.jpg", "idgall" => 4, "ord" => 7, "gname" => "Cinema"],
+                    ["id" => 71, "src" => "img/72feec0fb3b0bef627f8c1f6e5feeae6.jpg", "th" => "thumb/img/72feec0fb3b0bef627f8c1f6e5feeae6.jpg", "idgall" => 4, "ord" => 8, "gname" => "Cinema"],
+                    ["id" => 90, "src" => "img/29991fbbeb60f3eabaafc63aa393ded8.jpg", "th" => "thumb/img/29991fbbeb60f3eabaafc63aa393ded8.jpg", "idgall" => 4, "ord" => 9, "gname" => "Cinema"],
+                    ["id" => 75, "src" => "img/06501f086a52e19cc2c0d6c555b19731.jpg", "th" => "thumb/img/06501f086a52e19cc2c0d6c555b19731.jpg", "idgall" => 4, "ord" => 10, "gname" => "Cinema"],
+                    ["id" => 69, "src" => "img/45008565ebe59fdf6e0f342356fa68af.jpg", "th" => "thumb/img/45008565ebe59fdf6e0f342356fa68af.jpg", "idgall" => 4, "ord" => 11, "gname" => "Cinema"]
+                ]
+            ],
+            "5" => [
+                "gid" => 5,
+                "gname" => "Ritratti",
+                "descr" => "Wenn der Fokus auf den Menschen liegt...",
+                "gcover" => "minerva/thumb/img/e4688a188b2fa03625fcce4647b2d369.jpg",
+                "gcoverBig" => "minerva/img/img/e4688a188b2fa03625fcce4647b2d369.jpg",
+                "images" => [
+                    ["id" => 90, "src" => "img/29991fbbeb60f3eabaafc63aa393ded8.jpg", "th" => "thumb/img/29991fbbeb60f3eabaafc63aa393ded8.jpg", "idgall" => 5, "ord" => 1, "gname" => "Ritratti"],
+                    ["id" => 63, "src" => "img/6994f177985cfcd7f937178731f0ff46.jpg", "th" => "thumb/img/6994f177985cfcd7f937178731f0ff46.jpg", "idgall" => 5, "ord" => 2, "gname" => "Ritratti"],
+                    ["id" => 88, "src" => "img/7637536f7fe07d1f60a87cb346fa90a2.jpg", "th" => "thumb/img/7637536f7fe07d1f60a87cb346fa90a2.jpg", "idgall" => 5, "ord" => 3, "gname" => "Ritratti"],
+                    ["id" => 85, "src" => "img/fc270c65b12f6de8e76ad4afc0b49843.jpg", "th" => "thumb/img/fc270c65b12f6de8e76ad4afc0b49843.jpg", "idgall" => 5, "ord" => 4, "gname" => "Ritratti"],
+                    ["id" => 84, "src" => "img/05f52c0b06315a226a6453d702a3a4e7.jpg", "th" => "thumb/img/05f52c0b06315a226a6453d702a3a4e7.jpg", "idgall" => 5, "ord" => 5, "gname" => "Ritratti"],
+                    ["id" => 80, "src" => "img/1c9a68c64e8345b18e86ea9e672e1ff5.jpg", "th" => "thumb/img/1c9a68c64e8345b18e86ea9e672e1ff5.jpg", "idgall" => 5, "ord" => 6, "gname" => "Ritratti"],
+                    ["id" => 77, "src" => "img/3abc35d9bf27a02b3ee59cab55624439.jpg", "th" => "thumb/img/3abc35d9bf27a02b3ee59cab55624439.jpg", "idgall" => 5, "ord" => 7, "gname" => "Ritratti"],
+                    ["id" => 76, "src" => "img/08404a0ca7601180dd7a8ae61fe24ff1.jpg", "th" => "thumb/img/08404a0ca7601180dd7a8ae61fe24ff1.jpg", "idgall" => 5, "ord" => 8, "gname" => "Ritratti"],
+                    ["id" => 87, "src" => "img/b073690a7d4ffc0e5e2e076272622815.jpg", "th" => "thumb/img/b073690a7d4ffc0e5e2e076272622815.jpg", "idgall" => 5, "ord" => 9, "gname" => "Ritratti"],
+                    ["id" => 75, "src" => "img/06501f086a52e19cc2c0d6c555b19731.jpg", "th" => "thumb/img/06501f086a52e19cc2c0d6c555b19731.jpg", "idgall" => 5, "ord" => 10, "gname" => "Ritratti"],
+                    ["id" => 73, "src" => "img/d70651f64adbe2a7428e2b188e53ab91.jpg", "th" => "thumb/img/d70651f64adbe2a7428e2b188e53ab91.jpg", "idgall" => 5, "ord" => 11, "gname" => "Ritratti"],
+                    ["id" => 89, "src" => "img/478e6231704fff4e4951a4278f6c1de5.jpg", "th" => "thumb/img/478e6231704fff4e4951a4278f6c1de5.jpg", "idgall" => 5, "ord" => 12, "gname" => "Ritratti"],
+                    ["id" => 72, "src" => "img/25747f9f6ced913dcdff2905d3e50cb7.jpg", "th" => "thumb/img/25747f9f6ced913dcdff2905d3e50cb7.jpg", "idgall" => 5, "ord" => 13, "gname" => "Ritratti"],
+                    ["id" => 70, "src" => "img/44aaf6f6500e90485a9c2349dc756992.jpg", "th" => "thumb/img/44aaf6f6500e90485a9c2349dc756992.jpg", "idgall" => 5, "ord" => 14, "gname" => "Ritratti"],
+                    ["id" => 68, "src" => "img/e4688a188b2fa03625fcce4647b2d369.jpg", "th" => "thumb/img/e4688a188b2fa03625fcce4647b2d369.jpg", "idgall" => 5, "ord" => 15, "gname" => "Ritratti"],
+                    ["id" => 67, "src" => "img/a33b50934fd3ffdb3e5cbc28bccffe10.jpg", "th" => "thumb/img/a33b50934fd3ffdb3e5cbc28bccffe10.jpg", "idgall" => 5, "ord" => 16, "gname" => "Ritratti"],
+                    ["id" => 66, "src" => "img/d5cca9e2b27780507c6aaff50722cb7a.jpg", "th" => "thumb/img/d5cca9e2b27780507c6aaff50722cb7a.jpg", "idgall" => 5, "ord" => 17, "gname" => "Ritratti"],
+                    ["id" => 65, "src" => "img/17fd79b91bdeec1f831f75255d9eb1b3.jpg", "th" => "thumb/img/17fd79b91bdeec1f831f75255d9eb1b3.jpg", "idgall" => 5, "ord" => 18, "gname" => "Ritratti"],
+                    ["id" => 64, "src" => "img/9de203bae4399cd9ccd07bada4126fbc.jpg", "th" => "thumb/img/9de203bae4399cd9ccd07bada4126fbc.jpg", "idgall" => 5, "ord" => 19, "gname" => "Ritratti"],
+                    ["id" => 62, "src" => "img/69411fc01c89030d70c5ac8a51a6d411.jpg", "th" => "thumb/img/69411fc01c89030d70c5ac8a51a6d411.jpg", "idgall" => 5, "ord" => 20, "gname" => "Ritratti"]
+                ]
+            ]
+        ]
+    ],
+    "5" => [
+        "id" => 5,
+        "category" => "Loghi",
+        "cover" => "minerva/thumb/img/54835a3f72ff18d3ccb4fecab1a19a29.jpg",
+        "bigCover" => "minerva/img/img/54835a3f72ff18d3ccb4fecab1a19a29.jpg",
+        "description" => "Eine Sammlung von Logos, die mit Illustrator erstellt wurden.",
+        "friendlyURL" => "/loghi",
+        "galleries" => [
+            "6" => [
+                "gid" => 6,
+                "gname" => "Loghi",
+                "descr" => "",
+                "gcover" => "minerva/thumb/img/1cd2012de1e79e812274821e85f4fb20.jpg",
+                "gcoverBig" => "minerva/img/img/1cd2012de1e79e812274821e85f4fb20.jpg",
+                "images" => [
+                    ["id" => 5, "src" => "img/1cd2012de1e79e812274821e85f4fb20.jpg", "th" => "thumb/img/1cd2012de1e79e812274821e85f4fb20.jpg", "idgall" => 6, "ord" => 1, "gname" => "Loghi"],
+                    ["id" => 2, "src" => "img/3c032e2e9a6bf2dbf9dc3f49ce797255.jpg", "th" => "thumb/img/3c032e2e9a6bf2dbf9dc3f49ce797255.jpg", "idgall" => 6, "ord" => 2, "gname" => "Loghi"],
+                    ["id" => 1, "src" => "img/f2b8441559b4ad19899b94ace9490ecf.jpg", "th" => "thumb/img/f2b8441559b4ad19899b94ace9490ecf.jpg", "idgall" => 6, "ord" => 3, "gname" => "Loghi"],
+                    ["id" => 99, "src" => "img/2ecf8673c7f8b86fed4882d04d57bf76.jpg", "th" => "thumb/img/2ecf8673c7f8b86fed4882d04d57bf76.jpg", "idgall" => 6, "ord" => 4, "gname" => "Loghi"]
+                ]
+            ]
+        ]
+    ],
+    "6" => [
+        "id" => 6,
+        "category" => "Puppets",
+        "cover" => "minerva/thumb/img/a3a06188de40c12cccd336d9aefde2fb.jpg",
+        "bigCover" => "minerva/img/img/a3a06188de40c12cccd336d9aefde2fb.jpg",
+        "description" => "Die Puppen sind eine karikaturhafte Version der Menschen in meinem Leben, inspiriert von Funko Pop.",
+        "friendlyURL" => "/puppets",
+        "galleries" => [
+            "8" => [
+                "gid" => 8,
+                "gname" => "Puppets",
+                "descr" => "",
+                "gcover" => "minerva/thumb/img/ba9e0e917a01c0fd91ca5bf028296caa.jpg",
+                "gcoverBig" => "minerva/img/img/ba9e0e917a01c0fd91ca5bf028296caa.jpg",
+                "images" => [
+                    ["id" => 61, "src" => "img/80aa9658b9e8c1a1e429b8351bad83ad.jpg", "th" => "thumb/img/80aa9658b9e8c1a1e429b8351bad83ad.jpg", "idgall" => 8, "ord" => 1, "gname" => "Puppets"],
+                    ["id" => 60, "src" => "img/c1095e1fbca8a61b8724576648cfe1c2.jpg", "th" => "thumb/img/c1095e1fbca8a61b8724576648cfe1c2.jpg", "idgall" => 8, "ord" => 2, "gname" => "Puppets"],
+                    ["id" => 59, "src" => "img/697b5b9e7ec3522412930a11f65cae81.jpg", "th" => "thumb/img/697b5b9e7ec3522412930a11f65cae81.jpg", "idgall" => 8, "ord" => 3, "gname" => "Puppets"],
+                    ["id" => 58, "src" => "img/7342b4743438bd7c423df01bf19cc725.jpg", "th" => "thumb/img/7342b4743438bd7c423df01bf19cc725.jpg", "idgall" => 8, "ord" => 4, "gname" => "Puppets"],
+                    ["id" => 57, "src" => "img/f7e1f28caa820b9c7b31debe7d9f7373.jpg", "th" => "thumb/img/f7e1f28caa820b9c7b31debe7d9f7373.jpg", "idgall" => 8, "ord" => 5, "gname" => "Puppets"],
+                    ["id" => 56, "src" => "img/d4726b33542958ebebd7badd2066b5c2.jpg", "th" => "thumb/img/d4726b33542958ebebd7badd2066b5c2.jpg", "idgall" => 8, "ord" => 6, "gname" => "Puppets"],
+                    ["id" => 55, "src" => "img/a6a6bf3dd5f825fc3201ecdc40155808.jpg", "th" => "thumb/img/a6a6bf3dd5f825fc3201ecdc40155808.jpg", "idgall" => 8, "ord" => 7, "gname" => "Puppets"],
+                    ["id" => 54, "src" => "img/5e9dabbab20d0b4f3c12ee40c53896f3.jpg", "th" => "thumb/img/5e9dabbab20d0b4f3c12ee40c53896f3.jpg", "idgall" => 8, "ord" => 8, "gname" => "Puppets"],
+                    ["id" => 53, "src" => "img/ba9711ef80d6b875e881f6617593c11a.jpg", "th" => "thumb/img/ba9711ef80d6b875e881f6617593c11a.jpg", "idgall" => 8, "ord" => 9, "gname" => "Puppets"],
+                    ["id" => 52, "src" => "img/65589aa4be1e863e4ce30e74752df4be.jpg", "th" => "thumb/img/65589aa4be1e863e4ce30e74752df4be.jpg", "idgall" => 8, "ord" => 10, "gname" => "Puppets"],
+                    ["id" => 51, "src" => "img/15bedd5269311f4113accf5fa39e6e16.jpg", "th" => "thumb/img/15bedd5269311f4113accf5fa39e6e16.jpg", "idgall" => 8, "ord" => 11, "gname" => "Puppets"],
+                    ["id" => 49, "src" => "img/23523931361813e1e62f4328e7cd3b79.jpg", "th" => "thumb/img/23523931361813e1e62f4328e7cd3b79.jpg", "idgall" => 8, "ord" => 12, "gname" => "Puppets"],
+                    ["id" => 48, "src" => "img/de73b9802a344241b6e25df9198be6f9.jpg", "th" => "thumb/img/de73b9802a344241b6e25df9198be6f9.jpg", "idgall" => 8, "ord" => 13, "gname" => "Puppets"],
+                    ["id" => 47, "src" => "img/deca4a30a225cd14cadb20c7987ff6c6.jpg", "th" => "thumb/img/deca4a30a225cd14cadb20c7987ff6c6.jpg", "idgall" => 8, "ord" => 14, "gname" => "Puppets"],
+                    ["id" => 4, "src" => "img/a3a06188de40c12cccd336d9aefde2fb.jpg", "th" => "thumb/img/a3a06188de40c12cccd336d9aefde2fb.jpg", "idgall" => 8, "ord" => 15, "gname" => "Puppets"],
+                    ["id" => 3, "src" => "img/ba9e0e917a01c0fd91ca5bf028296caa.jpg", "th" => "thumb/img/ba9e0e917a01c0fd91ca5bf028296caa.jpg", "idgall" => 8, "ord" => 16, "gname" => "Puppets"]
+                ]
+            ]
+        ]
+    ],
+    "7" => [
+        "id" => 7,
+        "category" => "Grafiche",
+        "cover" => "minerva/thumb/img/623d96b1524fe25980ac5bc15fac6e3a.jpg",
+        "bigCover" => "minerva/img/img/623d96b1524fe25980ac5bc15fac6e3a.jpg",
+        "description" => "Plakate, Poster und vieles mehr!",
+        "friendlyURL" => "/grafiche",
+        "galleries" => [
+            "7" => [
+                "gid" => 7,
+                "gname" => "Grafiche",
+                "descr" => "",
+                "gcover" => "minerva/thumb/img/623d96b1524fe25980ac5bc15fac6e3a.jpg",
+                "gcoverBig" => "minerva/img/img/623d96b1524fe25980ac5bc15fac6e3a.jpg",
+                "images" => [
+                    ["id" => 98, "src" => "img/6dd4fc71a7e5a8223c8e4802676c96f3.jpg", "th" => "thumb/img/6dd4fc71a7e5a8223c8e4802676c96f3.jpg", "idgall" => 7, "ord" => 1, "gname" => "Grafiche"],
+                    ["id" => 43, "src" => "img/623d96b1524fe25980ac5bc15fac6e3a.jpg", "th" => "thumb/img/623d96b1524fe25980ac5bc15fac6e3a.jpg", "idgall" => 7, "ord" => 2, "gname" => "Grafiche"],
+                    ["id" => 42, "src" => "img/67e62c2e510d99ebff2c2f63b6abf39a.jpg", "th" => "thumb/img/67e62c2e510d99ebff2c2f63b6abf39a.jpg", "idgall" => 7, "ord" => 3, "gname" => "Grafiche"],
+                    ["id" => 41, "src" => "img/5811ba4bf1931676342e40f4f3917365.jpg", "th" => "thumb/img/5811ba4bf1931676342e40f4f3917365.jpg", "idgall" => 7, "ord" => 4, "gname" => "Grafiche"],
+                    ["id" => 28, "src" => "img/d57cac0233322763ab5dfdb1f5629a2d.jpg", "th" => "thumb/img/d57cac0233322763ab5dfdb1f5629a2d.jpg", "idgall" => 7, "ord" => 5, "gname" => "Grafiche"]
+                ]
+            ],
+            "9" => [
+                "gid" => 9,
+                "gname" => "Fotomontaggi",
+                "descr" => "Ich schwöre, dass sie gedruckt überhaupt nicht schlecht sind!",
+                "gcover" => "minerva/thumb/img/1e651cfa1e12b9393b837efcac804d34.jpg",
+                "gcoverBig" => "minerva/img/img/1e651cfa1e12b9393b837efcac804d34.jpg",
+                "images" => [
+                    ["id" => 37, "src" => "img/520fc968d4dde720341ab44844e6c9f8.jpg", "th" => "thumb/img/520fc968d4dde720341ab44844e6c9f8.jpg", "idgall" => 9, "ord" => 1, "gname" => "Fotomontaggi"],
+                    ["id" => 36, "src" => "img/429a28733c8eacca462ca6a3eec7e909.jpg", "th" => "thumb/img/429a28733c8eacca462ca6a3eec7e909.jpg", "idgall" => 9, "ord" => 2, "gname" => "Fotomontaggi"],
+                    ["id" => 35, "src" => "img/52ea471c9cb85ebeaf46093b01184aa1.jpg", "th" => "thumb/img/52ea471c9cb85ebeaf46093b01184aa1.jpg", "idgall" => 9, "ord" => 3, "gname" => "Fotomontaggi"],
+                    ["id" => 34, "src" => "img/30a26a1f7eb25bf1f22f33d6d917d179.jpg", "th" => "thumb/img/30a26a1f7eb25bf1f22f33d6d917d179.jpg", "idgall" => 9, "ord" => 4, "gname" => "Fotomontaggi"],
+                    ["id" => 33, "src" => "img/1e651cfa1e12b9393b837efcac804d34.jpg", "th" => "thumb/img/1e651cfa1e12b9393b837efcac804d34.jpg", "idgall" => 9, "ord" => 5, "gname" => "Fotomontaggi"],
+                    ["id" => 32, "src" => "img/43d2aae349f053f2f54a0454020662a3.jpg", "th" => "thumb/img/43d2aae349f053f2f54a0454020662a3.jpg", "idgall" => 9, "ord" => 6, "gname" => "Fotomontaggi"],
+                    ["id" => 31, "src" => "img/49aea894ea551c2e105cce3096624dc6.jpg", "th" => "thumb/img/49aea894ea551c2e105cce3096624dc6.jpg", "idgall" => 9, "ord" => 7, "gname" => "Fotomontaggi"],
+                    ["id" => 30, "src" => "img/d72733272105ff5118e2416444e90844.jpg", "th" => "thumb/img/d72733272105ff5118e2416444e90844.jpg", "idgall" => 9, "ord" => 8, "gname" => "Fotomontaggi"]
+                ]
+            ]
+        ]
+    ]
+];
+
+// Output the JSON with proper formatting
+echo json_encode($portfolioData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+?>

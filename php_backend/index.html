@@ -1,0 +1,255 @@
+<!--
+ ____   ___   ____ _   _ _____ _   _ _____ ____ ____  
+|  _ \ / _ \ / ___| | | | ____| \ | | ____/ ___/ ___| 
+| |_) | | | | |  _| | | |  _| |  \| |  _| \___ \___ \ 
+|  _ <| |_| | |_| | |_| | |___| |\  | |___ ___) |__) |
+|_| \_\\___/ \____|\___/|_____|_| \_|_____|____/____/ 
+
+Hello Developers, I wasted a lot of time building this site without any framework
+just because I thought it might be a good exercise, I hope you like it <3
+-->
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0"
+    />
+    <link rel="mask-icon" type="" href="" color="#111" />
+    <meta name="theme-color" content="#232528" />
+
+    <link rel="icon" href="./rogue.svg" />
+    <title>JOLINE | PORTFOLIO</title>
+    <meta
+      name="keywords"
+      content="Joline, Websites, Illustration, Programmierer, Zeichnungen, Entwicklung"
+    />
+    <meta
+      name="description"
+      content="Willkommen in meinem Portfolio! Ich bin Joline und arbeite als Webentwickler und digitaler Künstler. 
+  In diesem Bereich präsentiere ich einen Einblick in meine Arbeit und das, was ich gerne tue."
+    />
+
+    <script src="./js/api-config.js"></script>
+    <script src="./js/jquery_3.7.1.min.js"></script>
+    <script src="./js/gsap.min.js"></script>
+    <link rel="stylesheet" href="./css/app.min.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="engine">
+        <div id="home-case">
+          <div class="" id="home">
+            <div
+              class="main-image-cont"
+              onmousemove="homeParallax(event)"
+              onmouseleave="homeParallaxRet()"
+            >
+              <div class="homeMove">
+                <picture class="main-img" id="l1">
+                  <source
+                    media="(max-width: 1000px)"
+                    srcset="./assets/images/parallax/l1m.webp"
+                  />
+                  <img
+                    style="position: relative; height: 100%"
+                    src="./assets/images/parallax/l1.webp"
+                    alt="main background"
+                  />
+                </picture>
+
+                <picture class="main-img" id="l2">
+                  <source
+                    media="(max-width: 1000px)"
+                    srcset="./assets/images/parallax/l2m.webp"
+                  />
+
+                  <img
+                    style="position: relative; height: 100%"
+                    src="./assets/images/parallax/l2-o.webp"
+                    alt="main background 2"
+                  />
+                </picture>
+
+                <picture class="main-img" id="l3">
+                  <source
+                    media="(max-width: 1000px)"
+                    srcset="./assets/images/parallax/l3m.webp"
+                  />
+
+                  <img
+                    style="position: relative; height: 100%"
+                    src="./assets/images/parallax/l3o.webp"
+                    alt="main background 3"
+                  />
+                </picture>
+              </div>
+              <div class="main-overlay"></div>
+              <div class="h-menu-info">
+                <div class="h-info-cont">
+                  <div id="text-animation-container-css" class="">
+                    <span class="animated-text-css">Developer</span>
+                    <span class="animated-text-css">Artist</span>
+                    <span class="animated-text-css">UX/UI</span>
+                  </div>
+                  <div class="h-info-title">JOLINE</div>
+
+                  <div tranH="main_desc" class="h-info-desc">
+                    Willkommen in meinem Portfolio! Ich bin Joline und arbeite
+                    als Webentwickler und digitaler Künstler. In diesem Bereich
+                    präsentiere ich einen Einblick in meine Arbeit und das, was
+                    ich gerne tue.
+                  </div>
+                  <div class="enter-b-container">
+                    <div tranH="cta1" class="h-info-tutorial">SCROLLEN</div>
+                    <button tranH="cta2" class="go-to-menu">ENTER</button>
+                  </div>
+                </div>
+              </div>
+              <div id="scrollIndicator">
+                <svg viewBox="0 0 40 80">
+                  <path id="scrollLine" d="M20 10 L20 70" />
+                </svg>
+              </div>
+            </div>
+
+            <div class="loadbar"></div>
+          </div>
+        </div>
+
+        <div id="app-menu">
+          <div class="margins" id="menu-block">
+            <div class="main-menu">
+              <div class="menu-block on" id="sel0">
+                <div class="slider__thumbs">
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper"></div>
+                  </div>
+                </div>
+                <div class="menu-macro">
+                  <div class="menu-info-title">
+                    <div class="info-title"></div>
+                  </div>
+                  <div class="slider__images">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper"></div>
+                    </div>
+                  </div>
+
+                  <div class="menu-info" id="pageinfo">
+                    <div class="info-cont">
+                      <div class="info-desc"></div>
+                      <button tranH="cta3" class="go-to-page">
+                        SEITE ÖFFNEN
+                      </button>
+                    </div>
+                  </div>
+                  <div class="social-menu">
+                    <div class="social-container">
+                      <a
+                        class="mailer"
+                        href="mailto:actuallyme@jolinesserver.com"
+                        target="_blank"
+                        ><img
+                          class="social-icon"
+                          src="./assets/icons/mail.svg"
+                          alt="icon prev"
+                      /></a>
+                      <a
+                        href="https://www.instagram.com/johnneedsaladder/"
+                        target="_blank"
+                        ><img
+                          class="social-icon"
+                          src="./assets/icons/ig.svg"
+                          alt="icon prev"
+                      /></a>
+                      <a
+                        href="https://www.linkedin.com/in/joline-elizabeth-o-brien-1a72b3367/"
+                        target="_blank"
+                        ><img
+                          class="social-icon"
+                          src="./assets/icons/linkedin.svg"
+                          alt="icon prev"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-swiper-controls">
+                  <div
+                    class="swiper-button-prev swiper-control-block menu-swiper-button-prev"
+                  ></div>
+
+                  <div
+                    class="swiper-button-next swiper-control-block menu-swiper-button-next"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-pagination swiper-control-block menu-swiper-pagination"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page" data-scroll-container>
+        <div class="page-inner"></div>
+      </div>
+
+      <nav class="navbar">
+        <div class="logo">
+          <img class="logo-img" src="./assets/rogue.svg" alt="logo" />
+          <div class="home-nav">
+            <h4>JOLINE</h4>
+            <div class="home-back">
+              <img src="./assets/icons/arrow_back.svg" alt="indietro" />
+              <h4 tranH="back">ZURÜCK ZUR STARTSEITE</h4>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="language-switcher-pill">
+        <button id="lang-it">DE</button>
+        <button id="lang-en">EN</button>
+      </div>
+
+      <div class="menu-btn-ghost">
+        <div class="menu-btn-container disabled">
+          <div class="magnetic">
+            <div class="btn-holder">
+              <button
+                aria-label="menu"
+                name="menu button"
+                href="#"
+                class="magnet-button menu-button"
+              >
+                <div id="icon" class="close">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <loading-panel id="myLoadingPanel"></loading-panel>
+      <div class="screen-locker">
+        <h3>WEBSITE NICHT VERFÜGBAR MIT GEDREHTEM BILDSCHIRM</h3>
+      </div>
+      <custom-context-menu></custom-context-menu>
+    </div>
+
+    <script id="lastDep" src="./js/classes/app.min.js"></script>
+  </body>
+</html>

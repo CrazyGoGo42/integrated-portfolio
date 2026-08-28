@@ -1,0 +1,82 @@
+<my-galleries></my-galleries>
+<div class="form-container2">
+  <div class="rights-cont">
+    <p class="rights copy">@ JOLINE 2025</p>
+    <p class="rights cms-info">Powered by docker</p>
+  </div>
+</div>
+<script src="./js/api-config.js"></script>
+<script>
+  $(document).ready(() => {
+    if (window.innerWidth > 1000) {
+      var starter = document.querySelector(".page-inner");
+      lenis.scrollTo(starter, { immediate: true });
+
+      resetColor();
+    } else {
+      $("#page").scrollTop(0);
+    }
+    let fullData;
+
+    window.addEventListener("navsystem", (e) => {
+      if (e.detail.prop == "isPageOpen" && e.detail.arg == false) {
+        $(".activeCategoryControls").fadeOut(500, function () {});
+      } else if (e.detail.prop == "isPageOpen" && e.detail.arg == true) {
+        $(".activeCategoryControls")
+          .delay(500)
+          .fadeIn(300, function () {});
+      }
+    });
+
+    $.when(fetchAllData()).then((data, textStatus, jqXHR) => {
+      console.log('Portfolio data loaded:', typeof data, data);
+      
+      try {
+        // Handle both string and object data (jQuery auto-parses JSON with correct Content-Type)
+        var selGallParsed = typeof data === 'string' ? JSON.parse(data) : data;
+        console.log('JSON parsing successful, type:', typeof selGallParsed);
+      } catch (e) {
+        console.error('JSON parsing failed:', e, 'Data type:', typeof data, 'Data:', data);
+        var selGallParsed = data; // Use data as-is if parsing fails
+      }
+
+      fullData = selGallParsed;
+      console.log('Parsed fullData:', fullData);
+      let startingURL = urlRouting(fullData);
+
+      //$('menu-list')[0].init=fullData;
+
+      // Wait for my-galleries element to be ready
+      setTimeout(() => {
+        const galleryElement = $("my-galleries")[0];
+        if (galleryElement) {
+          console.log('Setting gallery loader with data:', fullData);
+          galleryElement.loader = fullData;
+          
+          const initValue = startingURL != -1 ? startingURL : fullData[Object.keys(fullData)[0]].id;
+          console.log('Initializing gallery with:', initValue);
+          galleryElement.init = initValue;
+        } else {
+          console.error('my-galleries element not found!');
+        }
+      }, 100);
+
+      $("#preback").fadeOut("slow", function () {
+        $(this).remove();
+      });
+    });
+
+    setTimeout(() => {
+      if (window.innerWidth > 1000) {
+        var starter = document.querySelector(".page-inner");
+        lenis.resize();
+        lenis.scrollTo(starter, { immediate: true });
+      } else {
+        $("#page").scrollTop(0);
+      }
+      $(".activeCategoryControls").fadeIn(300, function () {});
+
+      $(".form-container2").prepend("<custom-form></custom-form>");
+    }, 500);
+  });
+</script>
