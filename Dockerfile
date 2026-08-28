@@ -1,6 +1,6 @@
 FROM php:8.1-apache
 
-# Install system dependencies
+# System dependencies
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -11,34 +11,31 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli zip
 
-# Enable Apache modules
+# Apache modules
 RUN a2enmod rewrite headers expires deflate
 
-# Configure Apache for SPA
+# SPA-aware vhost
 COPY apache-spa.conf /etc/apache2/sites-available/000-default.conf
 
-# Copy application files (frontend + backend integrated)
-COPY php_backend/ /var/www/html/
+# The repo keeps the frontend (HTML/CSS/JS/assets) and the backend (PHP API)
+# in separate folders; at build time they are served together from one docroot.
+COPY frontend/ /var/www/html/
+COPY backend/  /var/www/html/
 
-# Set permissions
+# Permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# Create uploads directory
+# Writable uploads directory (also a mounted volume at runtime)
 RUN mkdir -p /var/www/html/uploads \
     && chown www-data:www-data /var/www/html/uploads \
     && chmod 777 /var/www/html/uploads
 
-# Enable compression and caching for frontend assets
-RUN echo "LoadModule deflate_module modules/mod_deflate.so" >> /etc/apache2/apache2.conf
-RUN echo "LoadModule expires_module modules/mod_expires.so" >> /etc/apache2/apache2.conf
-
 EXPOSE 80
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost/ || exit 1
