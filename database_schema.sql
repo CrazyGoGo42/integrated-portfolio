@@ -167,3 +167,14 @@ INSERT INTO admin_users (username, password_hash, email) VALUES
 -- Add sample API token
 INSERT INTO api_tokens (user_id, token, expires_at) VALUES
 (1, 'sample_admin_token_change_this', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+-- Contact form submissions
+CREATE TABLE IF NOT EXISTS contact_messages (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    ip_address VARCHAR(45),
+    user_agent VARCHAR(255),
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
