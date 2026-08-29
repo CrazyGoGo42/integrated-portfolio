@@ -1,6 +1,6 @@
 <?php
-// Contact form endpoint: validates input, stores the message in the database,
-// and (optionally) sends an email notification if CONTACT_TO is configured.
+// Contact form endpoint: validates input, applies spam protection, stores the
+// message in the database, and (optionally) emails a notification if CONTACT_TO is set.
 
 header('Content-Type: text/plain; charset=utf-8');
 
@@ -20,7 +20,18 @@ $name    = trim($_POST['visitor_name']    ?? '');
 $email   = trim($_POST['visitor_email']   ?? '');
 $message = trim($_POST['visitor_message'] ?? '');
 
-// Validation
+// The message a real visitor sees on success (also shown to bots we silently drop).
+$successText = 'Thanks ' . ($name !== '' ? $name : 'there') . ', your message has been received!';
+
+// --- Spam protection: honeypot ---------------------------------------------
+// `website` is a hidden field. Humans never fill it; bots that fill every input do.
+// Return a normal-looking success so bots don't learn they were filtered.
+if (trim($_POST['website'] ?? '') !== '') {
+    echo $successText;
+    exit;
+}
+
+// --- Validation ------------------------------------------------------------
 if ($name === '' || mb_strlen($name) > 200
     || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 255
     || $message === '' || mb_strlen($message) > 5000) {
@@ -29,7 +40,27 @@ if ($name === '' || mb_strlen($name) > 200
     exit;
 }
 
-// Store in the database
+// --- Spam protection: link flood -------------------------------------------
+// Legit enquiries rarely contain a pile of links; obvious link spam is dropped.
+if (preg_match_all('#https?://#i', $message) >= 5) {
+    echo $successText; // silently drop
+    exit;
+}
+
+// Client IP (proxy-aware: this site is fronted by nginx, so prefer X-Forwarded-For).
+function client_ip(): ?string {
+    $xff = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
+    if ($xff !== '') {
+        $first = trim(explode(',', $xff)[0]);
+        if (filter_var($first, FILTER_VALIDATE_IP)) {
+            return $first;
+        }
+    }
+    return $_SERVER['REMOTE_ADDR'] ?? null;
+}
+$ip = client_ip();
+
+// --- Store in the database -------------------------------------------------
 try {
     $pdo = new PDO(
         "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4",
@@ -37,6 +68,21 @@ try {
         DB_PASS,
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]
     );
+
+    // --- Spam protection: rate limit (max 5 per IP per 10 minutes) ---
+    if ($ip !== null) {
+        $rl = $pdo->prepare(
+            "SELECT COUNT(*) FROM contact_messages
+             WHERE ip_address = ? AND created_at > (NOW() - INTERVAL 10 MINUTE)"
+        );
+        $rl->execute([$ip]);
+        if ((int)$rl->fetchColumn() >= 5) {
+            http_response_code(429);
+            echo 'You have sent several messages recently. Please try again in a little while.';
+            exit;
+        }
+    }
+
     $stmt = $pdo->prepare(
         "INSERT INTO contact_messages (name, email, message, ip_address, user_agent)
          VALUES (?, ?, ?, ?, ?)"
@@ -45,7 +91,7 @@ try {
         $name,
         $email,
         $message,
-        $_SERVER['REMOTE_ADDR'] ?? null,
+        $ip,
         substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 255),
     ]);
 } catch (PDOException $e) {
@@ -55,7 +101,7 @@ try {
     exit;
 }
 
-// Best-effort email notification (only if a destination is configured and an MTA is available)
+// --- Best-effort email notification (only if configured and an MTA exists) --
 $to = getenv('CONTACT_TO') ?: '';
 if ($to !== '' && function_exists('mail')) {
     $subject = 'Portfolio contact from ' . $name;
@@ -66,4 +112,4 @@ if ($to !== '' && function_exists('mail')) {
     @mail($to, $subject, $body, $headers);
 }
 
-echo 'Thanks ' . $name . ', your message has been received!';
+echo $successText;
